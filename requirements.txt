@@ -1,0 +1,2 @@
+pygame==2.6.1
+pyinsatller=6.13.0
