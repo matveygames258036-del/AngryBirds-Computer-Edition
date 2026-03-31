@@ -1,4 +1,4 @@
-# Angry Birds Computer Edition
+# **Angry Birds Computer Edition**
 
 ## Описание
 Порт классической игры **Angry Birds** на **Python** с использованием **pygame**.
@@ -11,4 +11,6 @@ pip install -r requirements.txt
 ```
 
 ## Игра
-Если вы хотите просто играть скачайте установщик который скоро появится на данной странице в разделе "**Releases**"
+Если вы хотите просто играть скачайте установщик который скоро появится на данной странице в разделе "**Releases**".
+
+By **Matvey Semenkov**

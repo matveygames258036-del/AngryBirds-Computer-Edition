@@ -12,13 +12,13 @@ class Window:
 		pygame.display.set_caption(title)
 	def clear(self):
 		self.screen.fill(self.CLEAR_COLOR)
-	def draw(self, drawable_object, x, y):
-		self.screen.blit(drawable_object, (x, y))
+	def draw(self, drawable_object, coordinates):
+		self.screen.blit(drawable_object, coordinates)
 	def fill(self, color):
 		self.screen.fill(color)
 	def update(self):
-		self.clear()
 		pygame.display.flip()
+		self.clear()
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_F11:
@@ -61,12 +61,23 @@ class Sound:
 		else:
 			self.sound.set_volume(volume)
 
+class Image:
+	def __init__(self, path):
+		self.image = pygame.image.load(path).convert_alpha()
+	def get_for_draw(self):
+		return self.image
+	def transform_scale(self, width, height):
+		self.image = pygame.transform.scale(self.image, (width, height))
+
 window = Window("AngryBirds", 640, 480)
 
 theme_sound = Sound("resources/sounds/background.mp3", "infinity")
-theme_sound.set_volume(0.5)
+theme_sound.set_volume(0.3)
+
+background_image = Image("resources/images/menu_background.png")
 
 while True:
-	if not theme_sound.get_busy():
-		theme_sound.play()
-	window.update()
+    if not theme_sound.get_busy():
+        theme_sound.play()
+    window.draw(background_image.get_for_draw(), (0, 0))
+    window.update()
